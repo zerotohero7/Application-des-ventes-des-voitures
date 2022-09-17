@@ -1,0 +1,50 @@
+/* #carouselExampleCaptions{
+height: 700px;
+width: 100%;
+box-sizing: border-box;
+} */
+
+
+.section2{
+  margin: 30px auto;
+  text-align: center;
+  height: 500px;
+}
+
+  .contact{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 60px;
+  }
+
+  .phone{
+    border-radius: 50px;
+    margin-bottom: 10px;
+  }
+
+
+
+
+
+
+.section3{
+  height: 100%;
+  padding-top: 150px;
+  padding-bottom: 150px;
+  background-image: url('https://www.ycccars.com/images/demo/Pages/background.jpg');
+  display: flex;
+  flex-wrap: wrap;
+justify-content: space-around;
+
+}
+
+.myCard{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  transform: scale(0.9);
+}
+
+.section4{
+  height: 500px;
+}

@@ -1,0 +1,33 @@
+<app-header></app-header>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Description</th>
+      <th scope="col">Category</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody id="Tbody">
+    <tr *ngFor="let item of data ; index as i" >
+      <td scope="col">{{i+1}}</td>
+      <td scope="col">{{item.name}}</td>
+      <td scope="col">{{item.price}}</td>
+      <td scope="col">{{item.quantity}}</td>
+      <td scope="col">{{item.description}}</td>
+      <td scope="col">{{item.category}}</td>
+      <td scope="col">
+        <button (click)="modifier(i)" class="btn btn-warning">modifier</button>
+        <button (click)="delete(i)" class="btn btn-danger">delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="button">
+  <button class="btn btn-success btn-lg" (click)="addArticle()">Add Article</button>
+</div >

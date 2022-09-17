@@ -1,0 +1,8 @@
+.erreur{
+  color: red;
+  width: 50%;
+  text-align: center;
+  border: solid 2px red ;
+  margin: 150px auto;
+  font-size: 70px;
+}

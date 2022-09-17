@@ -1,0 +1,102 @@
+
+
+<section class="vh-100 bg-image"
+  style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+              <form [formGroup]="personnelsInformation" >
+
+                <div class="form-outline mb-4">
+                  <div
+                  class="text-danger"
+                  *ngIf="
+                  personnelsInformation.get('FirstName')?.invalid &&
+                  personnelsInformation.get('FirstName')?.touched
+                  "
+                  >
+                  <div
+                  *ngIf="personnelsInformation.get('FirstName')?.errors?.['required']"
+                  >
+                  First name is required
+                </div>
+              </div>
+              <input type="text" id="form3Example1cg" class="form-control form-control-lg"  [class.is-invalid]="
+              personnelsInformation.get('FirstName')?.invalid &&
+              personnelsInformation.get('FirstName')?.touched
+            "
+            formControlName="FirstName"/>
+                  <label class="form-label" for="form3Example1cg">First Name</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <div class="text-danger" *ngIf="nom?.invalid && nom?.touched">
+                    <div *ngIf="nom?.errors?.['required'] ">Family name is required</div>
+                  </div>
+                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" [class.is-invalid]="nom?.invalid && nom?.touched"
+                  formControlName="FamilyName"  />
+                  <label class="form-label" for="form3Example1cg">Family Name</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <div class="text-danger" *ngIf="mail?.invalid && mail?.touched">
+                    <div *ngIf="mail?.errors?.['required'] ">Email is required</div>
+                    <div *ngIf="mail?.errors?.['email'] ">Email is invalid</div>
+                  </div>
+                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" [class.is-invalid]="mail?.invalid && mail?.touched"
+                  formControlName="email" />
+                  <label class="form-label" for="form3Example3cg">Your Email</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <div class="text-danger" *ngIf="motPasse?.invalid && motPasse?.touched">
+                    <div *ngIf="motPasse?.errors?.['required'] ">Password is required</div>
+                    <div *ngIf="motPasse?.errors?.['minlength']">
+                      Password is minimum 5 caractere
+                    </div>
+                  </div>
+                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" [class.is-invalid]="motPasse?.invalid && motPasse?.touched"
+                  formControlName="password" />
+                  <label class="form-label" for="form3Example4cg">Password</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <div class="text-danger" *ngIf="CmotPasse?.invalid && CmotPasse?.touched">
+                    <div *ngIf="CmotPasse?.errors?.['required']">
+                      Confirmation password is required
+                    </div>
+                    <div *ngIf="CmotPasse?.errors?.['minlength']">
+                      Confirmation password is minimum 5 caractere
+                    </div>
+                  </div>
+                  <input type="password" id="form3Example4cdg" class="form-control form-control-lg" [class.is-invalid]="CmotPasse?.invalid && CmotPasse?.touched"
+                  formControlName="confirmationPassword" />
+                  <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                </div>
+
+
+
+                <div class="d-flex justify-content-center">
+                  <button type="submit"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+                    [disabled]="personnelsInformation.invalid"
+    (click)="register()">Register</button>
+                </div>
+
+                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a routerLink="/login"
+                    class="fw-bold text-body"><u>Login here</u></a></p>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
