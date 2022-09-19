@@ -12,6 +12,7 @@ export class AddArticleComponent implements OnInit {
   constructor(private fb : FormBuilder , private getService : DataService) { }
 
   ngOnInit(): void {
+
   }
 
   infosProducts :any = this.fb.group({
@@ -41,18 +42,24 @@ export class AddArticleComponent implements OnInit {
 
 
   getData(){
-    let table : any =JSON.parse(localStorage.getItem('products')!) || [] ;
-  let name = this.infosProducts.get('name').value
-  let price = this.infosProducts.get('price').value
-  let quantity = this.infosProducts.get('quantity').value
-  let description = this.infosProducts.get('description').value
-  let category = this.infosProducts.get('category').value
+    let name = this.infosProducts.get('name').value
+    let price = this.infosProducts.get('price').value
+    let quantity = this.infosProducts.get('quantity').value
+    let description = this.infosProducts.get('description').value
+    let category = this.infosProducts.get('category').value
+    let produit = {'name':name , 'price' : price , 'quantity' : quantity , 'description' : description , 'category' : category}
 
-
-
-  table.push({'name':name , 'price' : price , 'quantity' : quantity , 'description' : description , 'category' : category})
-
-    localStorage.setItem('products' , JSON.stringify(table)  )
-
+    this.getService.postProducts(produit).subscribe((responce)=>{
+      this.ngOnInit()
+  })
   }
+
+
+
+
+
+
+
+
+
 }
