@@ -9,33 +9,23 @@ import { DataService } from '../services/data.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private route : Router , private serviceData : DataService) { }
+  constructor(private route : Router , private DataService : DataService) { }
 
   ngOnInit(): void {
-      this.getTable()
+
   }
 
-  data : any = []
+  data : any = JSON.parse(localStorage.getItem('products')!)
 
-  getTable(){
-    this.serviceData.getProducts().subscribe(mydata=>{
-        this.data = mydata
-    })
+
+  modifier(id : number){
+    this.route.navigate(['/addArticle' , id])
   }
 
-  deleteProduct(id:any){
-    this.serviceData.deleteData(id).subscribe((response)=>
-      {this.ngOnInit()}
-      )
+  delete(x : any){
+   this.data.splice(x,1)
+   localStorage.setItem('products',JSON.stringify(this.data))
   }
-
-  modifier(id:any ){
-    this.serviceData.deleteData(id).subscribe((response)=>
-    {this.ngOnInit()}
-    )
-    this.route.navigate(['/addArticle'])
-  }
-
 
   addArticle(){
     this.route.navigate(['/addArticle'])

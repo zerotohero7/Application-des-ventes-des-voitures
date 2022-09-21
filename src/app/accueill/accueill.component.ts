@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-accueill',
@@ -8,19 +7,12 @@ import { DataService } from '../services/data.service';
 })
 export class AccueillComponent implements OnInit {
 
-  constructor(private serviceData : DataService ) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.getData()
   }
 
-  data : any = []
 
-  getData(){
-    this.serviceData.getProducts().subscribe(mydata=>
-      this.data = mydata
-      )
-  }
 
 
 

@@ -1,34 +1,27 @@
 import { Injectable } from '@angular/core';
-/* Importing the httpClient module from the angular common http library. */
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  constructor(private _http : HttpClient) { }
+  constructor(private route : Router) { }
 
   tableau : any = []
 
   getting(product : any){
     console.log(product);
     this.tableau.push(product)
-
   }
 
 
-    postProducts(data : any):Observable<any>{
-     return   this._http.post<any>('http://localhost:3000/products',data)
-    }
 
-    getProducts(){
-      return this._http.get<any>('http://localhost:3000/products')
-    }
+  logging : any  = true;
 
-    deleteData(id:number){
-      return this._http.delete<any>('http://localhost:3000/products' + '/' + id)
-    }
+
+
+
 
 }
+

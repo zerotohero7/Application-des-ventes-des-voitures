@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private rue: Router, private fb: FormBuilder) {}
+  constructor(private rue: Router, private fb: FormBuilder , private service : DataService) {}
 
   ngOnInit(): void {}
 
@@ -49,7 +50,6 @@ export class LoginComponent implements OnInit {
       if (loginMail === localMail && loginMotPasse === localPassword) {
         this.rue.navigate(['/accueil']);
         alert('valider');
-
       } else {
         this.adresse = '';
         this.passe = '';
@@ -57,4 +57,45 @@ export class LoginComponent implements OnInit {
     }
 
   }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

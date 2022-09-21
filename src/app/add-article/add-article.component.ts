@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -9,7 +10,42 @@ import { DataService } from '../services/data.service';
 })
 export class AddArticleComponent implements OnInit {
 
-  constructor(private fb : FormBuilder , private getService : DataService) { }
+  identite : any ;
+  create = true ;
+  modify = false ;
+  constructor(private fb : FormBuilder , private getService : DataService , private activeRue : ActivatedRoute) {
+
+    this.identite  = Number( this.activeRue.snapshot.paramMap.get('id')) -1
+
+
+    if (this.activeRue.snapshot.paramMap.get('id') === null ) {
+      this.create = true ;
+      this.modify = false ;
+    }else {
+      this.create = false ;
+      this.modify = true ;
+      this.infosProducts.get('name').value = JSON.parse(localStorage.getItem('products')!)[this.identite].name
+      this.infosProducts.get('price').value = JSON.parse(localStorage.getItem('products')!)[this.identite].price
+      this.infosProducts.get('quantity').value= JSON.parse(localStorage.getItem('products')!)[this.identite].quantity
+       this.infosProducts.get('description').value= JSON.parse(localStorage.getItem('products')!)[this.identite].description
+       this.infosProducts.get('category').value= JSON.parse(localStorage.getItem('products')!)[this.identite].category
+    }
+  }
+
+
+  update(){
+    let table : any =JSON.parse(localStorage.getItem('products')!) || [] ;
+    let name = this.infosProducts.get('name').value
+    let price = this.infosProducts.get('price').value
+    let quantity = this.infosProducts.get('quantity').value
+    let description = this.infosProducts.get('description').value
+    let category = this.infosProducts.get('category').value
+
+    table.splice(this.identite,1,{'name':name , 'price' : price , 'quantity' : quantity , 'description' : description , 'category' : category})
+    localStorage.setItem('products' , JSON.stringify(table))
+
+  }
+
 
   ngOnInit(): void {
 
@@ -42,18 +78,18 @@ export class AddArticleComponent implements OnInit {
 
 
   getData(){
-    let name = this.infosProducts.get('name').value
-    let price = this.infosProducts.get('price').value
-    let quantity = this.infosProducts.get('quantity').value
-    let description = this.infosProducts.get('description').value
-    let category = this.infosProducts.get('category').value
-    let produit = {'name':name , 'price' : price , 'quantity' : quantity , 'description' : description , 'category' : category}
+    let table : any =JSON.parse(localStorage.getItem('products')!) || [] ;
+  let name = this.infosProducts.get('name').value
+  let price = this.infosProducts.get('price').value
+  let quantity = this.infosProducts.get('quantity').value
+  let description = this.infosProducts.get('description').value
+  let category = this.infosProducts.get('category').value
 
-    this.getService.postProducts(produit).subscribe((responce)=>{
-      this.ngOnInit()
-  })
+
+
+  table.push({'name':name , 'price' : price , 'quantity' : quantity , 'description' : description , 'category' : category})
+    localStorage.setItem('products' , JSON.stringify(table))
   }
-
 
 
 

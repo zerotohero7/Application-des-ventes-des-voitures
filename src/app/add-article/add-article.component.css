@@ -13,3 +13,9 @@
   margin-top: 20px;
   margin-bottom: 100px;
 }
+
+.navBar{
+  position: fixed;
+  top: 0;
+  width: 100%;
+}

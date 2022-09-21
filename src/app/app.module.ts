@@ -14,8 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccueillComponent } from './accueill/accueill.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-import { HttpClientModule } from '@angular/common/http';
-
+import { GuardAdminGuard } from './guards/guard-admin.guard';
 
 @NgModule({
   declarations: [
@@ -35,8 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    HttpClientModule
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

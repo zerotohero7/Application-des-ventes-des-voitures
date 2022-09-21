@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header ></app-header>
 
 <table class="table table-striped">
   <thead>
@@ -22,8 +22,8 @@
       <td scope="col">{{item.description}}</td>
       <td scope="col">{{item.category}}</td>
       <td scope="col">
-        <button (click)="modifier(item.id)" class="btn btn-warning">modifier</button>
-        <button (click)="deleteProduct(item.id)" class="btn btn-danger">delete</button>
+        <button (click)="modifier(i+1)" class="btn btn-warning">modifier</button>
+        <button (click)="delete(i)" class="btn btn-danger">delete</button>
       </td>
     </tr>
   </tbody>

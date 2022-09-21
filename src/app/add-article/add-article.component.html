@@ -1,4 +1,5 @@
-<app-header></app-header>
+<app-header ></app-header>
+
 
 <div class="container">
   <form [formGroup]="infosProducts" >
@@ -82,7 +83,8 @@
         </div>
 
 
-      <button (click)="getData()" routerLink="/article"  [disabled]="infosProducts.invalid" type="submit" class="btn btn-primary">Create</button>
+      <button *ngIf="create" (click)="getData()" routerLink="/article"  [disabled]="infosProducts.invalid" type="submit" class="btn btn-primary">Create</button>
+      <button *ngIf="modify" (click)="update()" routerLink="/article" [disabled]="infosProducts.invalid"  type="submit" class="btn btn-success">Update</button>
       <a class="lien" routerLink="/article" >Article</a>
 
   </form>
