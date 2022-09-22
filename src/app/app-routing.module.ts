@@ -11,15 +11,15 @@ import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {path : '' , component : AccueillComponent, canActivate : [GuardAdminGuard]},
-  {path : 'article' , component : HomeComponent},
+  {path : 'article' , component : HomeComponent , canActivate : [GuardAdminGuard]},
   {path : 'accueil' , component : AccueillComponent , canActivate : [GuardAdminGuard]},
-  {path : 'addArticle' , component : AddArticleComponent},
-  {path : 'addArticle/:id' , component : AddArticleComponent},
-  {path : 'contact' , component : ContactComponent},
+  {path : 'addArticle' , component : AddArticleComponent , canActivate : [GuardAdminGuard]},
+  {path : 'addArticle/:id' , component : AddArticleComponent , canActivate : [GuardAdminGuard]},
+  {path : 'contact' , component : ContactComponent , canActivate : [GuardAdminGuard]},
   {path : 'login' , component : LoginComponent},
   {path : 'register' , component : RegisterComponent},
-  {path : '404' , component : ErrorsComponent},
-  {path : '**' , component : ErrorsComponent}
+  {path : '404' , component : ErrorsComponent , canActivate : [GuardAdminGuard]},
+  {path : '**' , component : ErrorsComponent , canActivate : [GuardAdminGuard]}
 ];
 
 @NgModule({

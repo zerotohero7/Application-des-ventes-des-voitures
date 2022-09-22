@@ -8,7 +8,7 @@ export class DataService {
 
   constructor(private route : Router) { }
 
-  tableau : any = []
+  tableau : any = [];
 
   getting(product : any){
     console.log(product);
@@ -17,7 +17,11 @@ export class DataService {
 
 
 
-  logging : any  = true;
+  // logging : any  = true;
+
+  logging(){
+    return   !!localStorage.getItem('token')
+  }
 
 
 

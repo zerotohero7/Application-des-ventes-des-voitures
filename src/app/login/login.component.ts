@@ -14,7 +14,9 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private rue: Router, private fb: FormBuilder , private service : DataService) {}
+  constructor(private rue: Router, private fb: FormBuilder , private service : DataService) {
+    localStorage.removeItem('token')
+  }
 
   ngOnInit(): void {}
 
@@ -50,6 +52,7 @@ export class LoginComponent implements OnInit {
       if (loginMail === localMail && loginMotPasse === localPassword) {
         this.rue.navigate(['/accueil']);
         alert('valider');
+        localStorage.setItem('token', 'pass')
       } else {
         this.adresse = '';
         this.passe = '';
